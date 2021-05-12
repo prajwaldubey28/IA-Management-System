@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome - IA Management System</title>
+	<style>
+		*{
+            padding: 0;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        body{
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            height: 100vh;
+        }
+        .inner{
+            margin: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid white;
+            -webkit-box-shadow: 5px 5px 15px 5px rgba(195,40,101,0.7); 
+            box-shadow: 5px 5px 15px 5px rgba(195,40,101,0.7);
+        }
+        #submit{
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid white;
+            padding: 5px 10px;
+            margin: 10px 0;
+            background-color: transparent;
+            color: white;
+			font-size: 18px;
+			transition: 0.5s all ease;
+		}
+		#submit:hover{
+			transform: scale(1.1);
+		}
+        h1{
+            font-size: 40px;
+            text-align: center;
+			text-shadow: 5px 5px 5px rgba(195,40,101,0.7);
+        }
+        h2{
+            font-size: 30px;
+            text-align: center;
+        }
+		.github a{
+            font-size: 40px;
+            color: white;
+            transition: 0.5s all ease;
+        }
+        .github a:hover{
+            color: #c32865;
+        }
+	</style>
+</head>
+<body>
+
+	<h1>IA Management System</h1>
+
+	<form action="/logout" method="POST">
+
+		<input type="submit" value="Logout" id="submit">
+
+	</form>
+	<br>
+
+	<div class="inner">
+		<p>
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul class=flashes>
+				{% for message in messages %}
+				<li>{{ message }}</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+			{% endwith %}
+		</p>
+
+		<br>
+
+		<form action="/ia1" method="post">
+
+			<input type="submit" value="Send IA1 mail" id="submit">
+
+		</form>
+		<br>
+
+		<form action="/ia1and2" method="post">
+
+			<input type="submit" value="Send IA1 and IA2 mail" id="submit">
+
+		</form>
+		<br>
+
+		<form action="/iaarrangement" method="post">
+
+			<input type="submit" value="Send IA seating arrangement mail" id="submit">
+
+		</form>
+		<br>
+	</div>
+
+	<div class="note">
+		NOTE : 
+		<li>Only .csv for list of students and their marks and 
+			.pdf for seating arrangement
+		</li>
+		<li>
+			.csv file must have first three columns as : <ol>  <li>Name</li><li>Roll Number</li><li>Email</li></ol>
+			followed by 5 Subjects column for IA1 and for IA2, 5 subjects columns and more 5 subjects columns marks of IA1
+		</li>
+		<li>
+			Email column must have first letter capital as "Email"
+		</li>
+	</div>
+
+	<div class="github">
+        <a href="https://github.com/sohamsahare123/ia-management-system-flask-app" target="_blank"><i class="fab fa-github"></i></a>
+	</div>
+	
+</body>
+</html>

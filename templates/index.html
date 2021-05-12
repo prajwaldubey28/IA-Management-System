@@ -1,0 +1,69 @@
+{% extends "prelogin.html" %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+    <h1>IA Management System</h1>
+
+    <div class="inner">
+
+        <h2>Sign up</h2>
+
+        <form action="{{ url_for('index') }}", method = "POST">
+
+            <div>
+                {{ form.username(class = 'form-control', 
+                placeholder = 'Username',
+                autocomplete = 'off',
+                autofocus = true) }}
+
+                <ul>
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+            <div>
+                {{ form.password(class = 'form-control', 
+                placeholder = 'Password') }}
+
+                <ul>
+                    {% for error in form.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+            <div>
+                {{ form.confirm_password(class = 'form-control', 
+                placeholder = 'Confirm Password') }}
+
+                <ul>
+                    {% for error in form.confirm_password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+            <div>
+                
+                {{ form.submit }}
+
+            </div>
+
+            {{ form.csrf_token }}
+
+        </form>
+
+    
+        <form action="/login">
+            <label>Already have an account ?</label>
+            <input type="submit" value="Login" id="submit">
+        </form>
+
+    </div>
+{% endblock %}
